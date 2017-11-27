@@ -13,8 +13,8 @@ class Net(nn.Module):
 
         # 1 input image channel, 6 output channels, 5x5 square convolution
         # kernel
-        self.conv1 = nn.Conv2d(1, 6, 5)
-        self.conv2 = nn.Conv2d(6, 16, 5)
+        self.conv1 = nn.Conv2d(1, 6, 4)
+        self.conv2 = nn.Conv2d(6, 16, 4)
         # an affine operation: y = Wx + b
         self.fc1 = nn.Linear(6400, 120)
         self.fc2 = nn.Linear(120, 84)
