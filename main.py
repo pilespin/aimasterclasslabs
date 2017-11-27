@@ -52,6 +52,17 @@ test_loader = torch.utils.data.DataLoader(
 
 
 model = models.Net()
+
+# D_in    = 28*28
+# H       = 500
+# D_out   = 27
+
+# model = torch.nn.Sequential(
+#     torch.nn.Linear(D_in, H),   torch.nn.ReLU(),
+#     torch.nn.Linear(H, H),      torch.nn.ReLU(),
+#     torch.nn.Linear(H, D_out),
+# )
+
 if args.cuda:
     model.cuda()
 
