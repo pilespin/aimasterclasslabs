@@ -16,7 +16,7 @@ class Net(nn.Module):
         self.conv1 = nn.Conv2d(1, 6, 4)
         self.conv2 = nn.Conv2d(6, 16, 4)
         # an affine operation: y = Wx + b
-        self.fc1 = nn.Linear(6400, 120)
+        self.fc1 = nn.Linear(256, 120)
         self.fc2 = nn.Linear(120, 84)
         self.fc3 = nn.Linear(84, 27)
 
@@ -59,8 +59,8 @@ class Net(nn.Module):
         # x = self.fc2(x.view(x.size(0), -1))
         # x = self.fc3(x.view(x.size(0), -1))
 
-        x = self.conv1(x)
-        x = self.conv2(x)
+        x = F.max_pool2d(F.relu(self.conv1(x)), (2, 2))
+        x = F.max_pool2d(F.relu(self.conv2(x)), (2, 2))
         
         x = self.fc1(x.view(x.size(0), -1))
         # x = self.fc1(x)
