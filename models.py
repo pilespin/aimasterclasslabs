@@ -17,6 +17,8 @@ class Net(nn.Module):
         self.fc2 = nn.Linear(2592, 500)
         self.fc3 = nn.Dropout(p=0.2)
         self.fc4 = nn.Linear(500, 27)
+        self.fc5 = nn.Dropout(p=0.2)
+
 
 
     def forward(self, x):
@@ -32,5 +34,6 @@ class Net(nn.Module):
         # x = F.tanh(self.fc2(x))
         x = F.tanh(self.fc3(x))
         x = F.tanh(self.fc4(x))
+        x = F.tanh(self.fc5(x))
         
         return F.log_softmax(x)
